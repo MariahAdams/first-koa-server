@@ -32,7 +32,8 @@
   "dependencies": {
     "dotenv": "^6.2.0",
     "koa": "^2.7.0",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.4.9"
   },
   "devDependencies": {
     "eslint": "^5.13.0",
