@@ -2,6 +2,7 @@ require('dotenv').config();
 require('../../lib/utils/connect')();
 const Koala = require('../../lib/models/Koala');
 const mongoose = require('mongoose');
+const getErrors = require('./error');
 
 describe('Koala Model', () => {
 
@@ -28,6 +29,13 @@ describe('Koala Model', () => {
     delete json._id;
     expect(json).toEqual(data);
     expect(koala.validateSync()).toBeUndefined();
+  });
+
+  it('validates required fields', () => {
+    const koala = new Koala({});
+    const errors = getErrors(koala.validateSync(), 2);
+    expect(errors.name.kind).toEqual('required');
+    expect(errors.age.kind).toEqual('required');
   });
 
 });
