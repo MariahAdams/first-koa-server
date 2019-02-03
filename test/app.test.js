@@ -8,10 +8,13 @@ describe('Hello World', () => {
     server.close();
   });
 
-  it('should return welcome message', done => {
-    request
-      .get('/')
-      .expect(200)
-      .expect('Welcome! To the Koala Book of Everything!', done);
+  it('should return welcome message', async() => {
+    const res = await request.get('/');
+    expect(res.status).toEqual(200);
+    expect(res.text).toEqual('Welcome! To the Koala Book of Everything!');
+  });
+
+  it('should return 404', async() => {
+    //TBD
   });
 });
