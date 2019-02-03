@@ -15,6 +15,8 @@ describe('Hello World', () => {
   });
 
   it('should return 404', async() => {
-    //TBD
+    const res = await request.get('/test');
+    expect(res.status).toEqual(404);
+    expect(res.text).toEqual('Not Found');
   });
 });
