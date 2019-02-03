@@ -14,6 +14,12 @@ describe('Hello World', () => {
     expect(res.text).toEqual('Welcome! To the Koala Book of Everything!');
   });
 
+  it('should return 500 when error is thrown', async() => {
+    const res = await request.get('/error');
+    expect(res.status).toEqual(500);
+    expect(res.text).toEqual('An error occurred at /error');
+  });
+
   it('should return 404', async() => {
     const res = await request.get('/test');
     expect(res.status).toEqual(404);
