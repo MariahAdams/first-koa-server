@@ -51,6 +51,14 @@ describe('App', () => {
       expect(res.status).toEqual(413);
     });
 
+    it('should return 400 when no name is sent', async() => {
+      const res = await request
+        .post('/uppercase')
+        .send('age=100');
+      console.log('***body***', res.body);
+      expect(res.status).toEqual(400);
+    });
+
   });
 
 });
