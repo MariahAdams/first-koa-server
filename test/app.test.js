@@ -35,5 +35,13 @@ describe('App', () => {
       expect(res.status).toEqual(200);
       expect(res.body).toEqual({ name: 'TOBI' });
     });
+
+    it('should work with urlencoded', async() => {
+      const res = await request
+        .post('/uppercase')
+        .send('name=tj');
+      expect(res.status).toEqual(200);
+      expect(res.body).toEqual({ name: 'TJ' });
+    });
   });
 });
