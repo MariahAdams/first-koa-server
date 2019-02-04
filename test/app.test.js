@@ -43,5 +43,14 @@ describe('App', () => {
       expect(res.status).toEqual(200);
       expect(res.body).toEqual({ name: 'TJ' });
     });
+
+    it('should return 413 when length > limit', async() => {
+      const res = await request
+        .post('/json')
+        .send({ name: Array(5000).join('a') });
+      expect(res.status).toEqual(413);
+    });
+
   });
+
 });
