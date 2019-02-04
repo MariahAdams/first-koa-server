@@ -1,5 +1,5 @@
-const app = require('../lib/app');
-const server = app.listen();
+// const app = require('../lib/app');
+// const server = app.listen();
 // const request = require('supertest').agent(server);
 
 describe('koala routes', () => {

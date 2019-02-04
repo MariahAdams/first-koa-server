@@ -2,7 +2,7 @@ const app = require('../lib/app');
 const server = app.listen();
 const request = require('supertest').agent(server);
 
-describe.skip('Hello World', () => {
+describe('App', () => {
 
   afterAll(() => {
     server.close();
@@ -24,5 +24,16 @@ describe.skip('Hello World', () => {
     const res = await request.get('/test');
     expect(res.status).toEqual(404);
     expect(res.text).toEqual('Not Found');
+  });
+
+  describe('BodyParser', () => {
+
+    it('should POST to /uppercase', async() => {
+      const res = await request
+        .post('/uppercase')
+        .send({ name: 'tobi' });
+      expect(res.status).toEqual(200);
+      expect(res.body).toEqual({ name: 'TOBI' });
+    });
   });
 });
