@@ -41,6 +41,14 @@ describe('koala routes', () => {
     });
   });
 
+  it('should GET all koalas', async() => {
+    await Koala.create({ name: 'Julie', age: 4, home: 'SD' });
+    await Koala.create({ name: 'Joey', age: 10, home: 'Aus' });
+
+    const res = await request
+      .get('/koalas');
+    expect(res.body.data).toHaveLength(2);
+  });
 
 });
 
