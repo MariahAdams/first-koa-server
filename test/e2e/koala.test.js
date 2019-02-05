@@ -50,6 +50,20 @@ describe('koala routes', () => {
     expect(res.body.data).toHaveLength(2);
   });
 
+  it('should GET one koala', async() => {
+    const george = await Koala.create({ name: 'George', age: 13, home: 'SD' });
+
+    const res = await request
+      .get(`/koalas/${george._id}`);
+    expect(res.body.data).toEqual({
+      name: 'George',
+      age: 13,
+      home: 'SD',
+      _id: george._id.toString(),
+      __v: 0
+    });
+  });
+
 });
 
 /* Async testing with mongoose: http://thecodebarbarian.com/using-async-await-with-mocha-express-and-mongoose */
