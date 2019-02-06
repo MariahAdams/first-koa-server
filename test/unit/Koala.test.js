@@ -4,7 +4,7 @@ const Koala = require('../../lib/models/Koala');
 const mongoose = require('mongoose');
 const getErrors = require('./error');
 
-describe.skip('Koala Model', () => {
+describe('Koala Model', () => {
 
   beforeEach(done => {
     return mongoose.connection.dropDatabase(() => {
