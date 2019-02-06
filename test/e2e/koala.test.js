@@ -21,7 +21,7 @@ describe('koala routes', () => {
   });
 
 
-  it('should save a koala', async() => {
+  it('should CREATE a koala', async() => {
     const koala = { name: 'Julie', age: 4, home: 'SD' };
     const createKoala = await Koala.create(koala);
 
@@ -62,6 +62,14 @@ describe('koala routes', () => {
       _id: george._id.toString(),
       __v: 0
     });
+  });
+
+  it('should DELETE one koala', async() => {
+    const thanos = await Koala.create({ name: 'Thanos', age: 1000, home: 'Nowhere' });
+
+    const res = await request
+      .delete(`/koalas/${thanos._id}`);
+    expect(res.body).toEqual({ deleted: 1 });
   });
 
 });
