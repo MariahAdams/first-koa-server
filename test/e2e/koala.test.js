@@ -72,6 +72,21 @@ describe('koala routes', () => {
     expect(res.body).toEqual({ deleted: 1 });
   });
 
+  it('should UPDATE a koala', async() => {
+    const mocha = await Koala.create({ name: 'Mocha', age: 2, home: 'Aus' });
+
+    const res = await request
+      .put(`/koalas/${mocha._id}`)
+      .send({ age: 4 });
+    expect(res.body).toEqual({
+      name: 'Mocha', 
+      age: 4, 
+      home: 'Aus',
+      _id: expect.any(String),
+      __v: 0
+    });
+  });
+
 });
 
 /* Async testing with mongoose: http://thecodebarbarian.com/using-async-await-with-mocha-express-and-mongoose */
