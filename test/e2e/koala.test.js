@@ -88,5 +88,3 @@ describe('koala routes', () => {
   });
 
 });
-
-/* Async testing with mongoose: http://thecodebarbarian.com/using-async-await-with-mocha-express-and-mongoose */
